@@ -1,7 +1,7 @@
 package com.ada.petbet.controller;
 
 import com.ada.petbet.entity.Bicho;
-import com.ada.petbet.service.BichoService;
+import com.ada.petbet.service.GenericService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -13,16 +13,17 @@ import static org.springframework.http.HttpStatus.CREATED;
 import static org.springframework.http.HttpStatus.OK;
 
 @RestController
-@RequestMapping("/pet")
+@RequestMapping("/bicho")
 public class BichoController {
 
     @Autowired
-    BichoService bichoService;
+    GenericService<Bicho> bichoService;
 
 
-    @GetMapping(value = "/bichos", produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<List<Bicho>> getBichos() {
-        return new ResponseEntity<>(bichoService.getBichos(), OK);
+    @GetMapping(value = "/lista", produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<List<Bicho>> getBichos()
+    {
+        return new ResponseEntity<>(bichoService.getGenerics(), OK);
     }
 
     @PostMapping(value = "/add")
@@ -39,6 +40,5 @@ public class BichoController {
     public void delete(@PathVariable("id") Long id) {
         bichoService.delete(id);
     }
-
 
 }

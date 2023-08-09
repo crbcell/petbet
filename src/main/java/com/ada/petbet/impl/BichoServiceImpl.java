@@ -2,7 +2,7 @@ package com.ada.petbet.impl;
 
 import com.ada.petbet.entity.Bicho;
 import com.ada.petbet.repository.BichoRepository;
-import com.ada.petbet.service.BichoService;
+import com.ada.petbet.service.GenericService;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -11,7 +11,7 @@ import java.util.Optional;
 
 @Service
 @AllArgsConstructor
-public class BichoServiceImpl implements BichoService {
+public class BichoServiceImpl implements GenericService<Bicho> {
     private BichoRepository bichoRepository;
 
     @Override
@@ -20,7 +20,7 @@ public class BichoServiceImpl implements BichoService {
     }
 
     @Override
-    public List<Bicho> getBichos() {
+    public List<Bicho> getGenerics() {
         return bichoRepository.findAll().stream().toList();
     }
 

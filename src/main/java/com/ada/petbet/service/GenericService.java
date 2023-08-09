@@ -7,15 +7,12 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
-public interface BichoService {
+public interface GenericService<T> {
 
-    Bicho add (Bicho bicho);
-    List<Bicho> getBichos();
-    Bicho update (Bicho bicho);
-
+    T add (T t);
+    List<T> getGenerics();
+    T update (T t);
     void delete (Long id);
 
-    Optional<Bicho> getById(Integer id) throws Throwable;
-
-
+    Optional<T> getById(Integer id) throws Throwable;
 }

@@ -1,11 +1,13 @@
 package com.ada.petbet.entity;
 
-import lombok.AllArgsConstructor;
-
-import javax.persistence.*;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
 
 @Entity
-@Table(name = "tb_bicho")public class Bicho {
+@Table(name = "tb_bicho")
+public class Bicho {
 
     @Id
     private Long id;
