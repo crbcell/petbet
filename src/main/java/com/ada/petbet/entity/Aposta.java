@@ -1,5 +1,6 @@
 package com.ada.petbet.entity;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
@@ -19,8 +20,19 @@ public class Aposta {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     private double valor;
-    private String apostador;
+
+    @JsonBackReference
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "id_apostador", referencedColumnName = "id", insertable = false, updatable = false)
+    private Apostador apostador;
+
     private LocalDate data;
-    public Aposta() {
+
+    public Aposta(Apostador apostador) {
+        this.apostador = apostador;
+    }
+
+    public void setApostador(Apostador apostador) {
+        this.apostador=apostador;
     }
 }
