@@ -21,18 +21,19 @@ public class Aposta {
     private Long id;
     private double valor;
 
-    @JsonBackReference
-    @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "id_apostador", referencedColumnName = "id", insertable = false, updatable = false)
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "id_apostador", referencedColumnName = "id")
     private Apostador apostador;
-
     private LocalDate data;
+
+    public Aposta() {
+    }
 
     public Aposta(Apostador apostador) {
         this.apostador = apostador;
     }
 
     public void setApostador(Apostador apostador) {
-        this.apostador=apostador;
+        this.apostador = apostador;
     }
 }
