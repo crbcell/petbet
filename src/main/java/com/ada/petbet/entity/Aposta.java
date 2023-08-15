@@ -21,7 +21,8 @@ public class Aposta {
     private Long id;
     private double valor;
 
-    @ManyToOne(cascade = CascadeType.ALL)
+    @JsonBackReference
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "id_apostador", referencedColumnName = "id")
     private Apostador apostador;
     private LocalDate data;
@@ -29,11 +30,12 @@ public class Aposta {
     public Aposta() {
     }
 
-    public Aposta(Apostador apostador) {
-        this.apostador = apostador;
+    public Apostador getApostador() {
+        return apostador;
     }
 
-    public void setApostador(Apostador apostador) {
+    public Aposta setApostador(Apostador apostador) {
         this.apostador = apostador;
+        return this;
     }
 }
