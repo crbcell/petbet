@@ -29,13 +29,4 @@ public class Aposta {
 
     public Aposta() {
     }
-
-    public Apostador getApostador() {
-        return apostador;
-    }
-
-    public Aposta setApostador(Apostador apostador) {
-        this.apostador = apostador;
-        return this;
-    }
 }
